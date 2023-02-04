@@ -1,5 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { lazy } from "react";
+
+const SuspendingButton = lazy(() => import("./LazyComponents")).then(
+  (module) => ({
+    default: module.SuspendingButton,
+  })
+);
 
 function App() {
   return (
@@ -17,6 +24,7 @@ function App() {
         >
           Learn React
         </a>
+        <SuspendingButton />
       </header>
     </div>
   );
